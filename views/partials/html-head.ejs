@@ -4,5 +4,63 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= docURL %></title>
+  <link rel="stylesheet" href="/css/main.css">
+  <style>
+    :root {
+      --bg: #eeede4;
+      --black: #1a1514;
+      --accent: #7f3927;
+      --light: #625451;
+    }
+    *{
+      box-sizing: none;
+    }
+    html {
+      background-color: var(--bg);
+      color: var(--black);
+      padding: 0;
+      margin: 0;
+      font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+    html, body, h1, h2, h3, h4, h5, h6, p, li, ul, a {
+      padding: 0;
+      margin: 0;
+      color: var(--inherit);
+      list-style: none;
+      text-decoration: none;
+    }
+
+    h1 {
+      width: 100vw;
+      font-size: clamp(2rem, 7.5vw, 30rem);
+      text-align: center;
+      white-space: nowrap;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 900;
+      letter-spacing: .5rem;
+    }
+
+    nav .navbar {
+      padding: 1rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+    }
+    .navbar ul {
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+    }
+    .navbar ul {
+      font-weight: 300;
+      letter-spacing: 1.25px;
+    } 
+    a:hover {
+      text-decoration: underline;
+    }
+    main {
+      padding: 4rem 2rem;
+    }
+  </style>
 </head>
 <body>

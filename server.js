@@ -62,6 +62,7 @@ const RESTAURANT = {
 
 app.get("/", (req, res) => {
   res.render("home.ejs", {
+    restaurant: RESTAURANT,
     docURL: RESTAURANT.name,
   });
 });
@@ -69,6 +70,7 @@ app.get("/", (req, res) => {
 
 app.get("/:menuID", (req, res) => {
   res.render("menu.ejs", {
+    restaurant: RESTAURANT,
     docURL: `Menu | ${RESTAURANT.menu[req.params.menuID].name}`,
   });
 })

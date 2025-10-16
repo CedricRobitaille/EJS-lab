@@ -1,8 +1,180 @@
 <%- include("./partials/html-head") %>
 <%- include("./partials/nav") %>
 
+<style>
+  h2 {
+    text-transform: uppercase;
+    line-height: 2.25rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    font-size: 2rem;
+  }
+  #info {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  #info p {
+    color: var(--light)
+  }
+  img {
+    width: 100%;
+    height: clamp(20rem, 100vh, 66vh);
+    margin: 6rem 0;
+    background-color: rgb(127, 57, 39,.25);
+    object-fit: cover;
+  }
+  .accordion {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  button {
+    position: relative;
+    width: 100%;
+    padding: 2rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    background-color: var(--bg);
+    border: none;
+    border-top: 2px solid var(--accent);
+    text-transform: uppercase;
+    color: var(--accent);
+    cursor: pointer;
+    
+  }
+  button::after {
+    content: "";
+    position: absolute;
+    display: block;
+    height: .75rem;
+    width: .75rem;
+    border-right: 3px solid var(--accent);
+    border-bottom: 3px solid var(--accent);
+    right: 1rem;
+    top: 2.375rem;
+    transform: rotate(45deg);
+    transition: .25s;
+  }
+  button::before {
+    content: "";
+    position: absolute;
+    display: block;
+    height: .75rem;
+    width: .75rem;
+    border-right: 3px solid var(--accent);
+    border-bottom: 3px solid var(--accent);
+    left: 1rem;
+    top: 2.375rem;
+    transform: rotate(45deg);
+    transition: .25s;
+  }
+  button.active::after {
+    transform: rotate(-135deg);
+    top: 2.625rem;
+  } 
+  
+  button.active::before {
+    transform: rotate(225deg);
+    top: 2.625rem;
+  }
+  button:last-of-type {
+    border-bottom: 2px solid var(--accent);
+  }
+  .panel {
+    display: none;
+    padding: 3rem;
+    background-color: var(--accent);
+    color: var(--bg);
+    text-align: center;
+    flex-direction: column;
+    gap: 2rem;
+    border-radius: 0px 0px 16px 16px;
+  }
+  h3 {
+    font-size: 1.75rem;
+    margin-bottom: .5rem;
+    text-transform: uppercase;
+    letter-spacing: 1.75px;
+  }
+  .panel p {
+    font-size: 1.125rem;
+    letter-spacing: 1px;
+  }
+</style>
+
+<main>
+
+  <section id="info">
+      <h2>Discover fresh flavors of Tech at our innovative newage cuisine restaurant.</h2>
+      <div></div>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam sint repudiandae, sit aliquam quasi ea eaque pariatur libero harum unde consequatur placeat exercitationem earum quo ratione distinctio autem cum numquam!</p>
+      <div></div>
+    </section>
+
+  <img src="" alt="">
+
+  <div id="accordion">
+    <% const categories = ["sides","mains","desserts"] %>
+
+      <button>Sides</button>
+      <ul class="panel">
+      <% restaurant.menu.forEach((food) => { %>
+        <% if (food.category === "sides") { %>
+          <li>
+            <h3><%= food.name %></h3>
+            <p><%= food.details %></p>
+          </li>
+        <% } %>
+      <% }); %>
+      </ul>
+
+      <button>Mains</button>
+      <ul class="panel">
+      <% restaurant.menu.forEach((food)=> { %>
+        <% if (food.category==="mains" ) { %>
+          <li>
+            <h3><%= food.name %></h3>
+            <p><%= food.details %></p>
+          </li>
+        <% } %>
+      <% }); %>
+      </ul>
 
 
+      <button>Desserts</button>
+      <ul class="panel">
+      <% restaurant.menu.forEach((food)=> { %>
+        <% if (food.category==="desserts" ) { %>
+          <li>
+            <h3><%= food.name %></h3>
+            <p><%= food.details %></p>
+          </li>
+        <% } %>
+      <% }); %>
+      </ul>
+    
+    <script>
+      const accordionBtns = document.querySelectorAll("button");
+      accordionBtns.forEach((button) => {
+        button.addEventListener("click", (event) => {
+          console.log("yes")
+          event.currentTarget.classList.toggle("active");
+          const infoPanel = event.currentTarget.nextElementSibling;
+          console.log(infoPanel)
+          if (infoPanel.style.display === "flex") {
+            infoPanel.style.display = "none"
+          } else {
+            infoPanel.style.display = "flex"
+          }
+        })
+      })
+
+    </script>
+  </div>
+
+
+
+</main>
 
 
 

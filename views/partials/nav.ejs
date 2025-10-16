@@ -1,0 +1,29 @@
+<nav>
+  <h1>
+    <%= restaurant.name %>
+  </h1>
+  <div class="navbar">
+    <ul>
+      <a href="/">
+        <li>Home</li>
+      </a>
+      <a href="/mains">
+        <li>Mains</li>
+      </a>
+      <a href="/sides">
+        <li>Sides</li>
+      </a>
+      <a href="/desserts">
+        <li>Desserts</li>
+      </a>
+    </ul>
+    <ul>
+      <li>
+        <%= restaurant.isOpen ? "Open" : "Closed" %>
+      </li>
+      <li>
+        <%= restaurant.phone %>
+      </li>
+    </ul>
+  </div>
+</nav>
